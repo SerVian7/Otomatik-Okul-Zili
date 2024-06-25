@@ -559,8 +559,6 @@
             // Sabahci_Switch
             // 
             Sabahci_Switch.BackColor = Color.White;
-            Sabahci_Switch.Checked = true;
-            Sabahci_Switch.CheckState = CheckState.Checked;
             Sabahci_Switch.Depth = 0;
             Sabahci_Switch.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             Sabahci_Switch.Location = new Point(2, 29);
@@ -1124,8 +1122,6 @@
             // Oglenci_Switch
             // 
             Oglenci_Switch.BackColor = Color.White;
-            Oglenci_Switch.Checked = true;
-            Oglenci_Switch.CheckState = CheckState.Checked;
             Oglenci_Switch.Depth = 0;
             Oglenci_Switch.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             Oglenci_Switch.Location = new Point(9, 29);
