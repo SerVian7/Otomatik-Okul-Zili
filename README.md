@@ -7,7 +7,7 @@
 1. **Başlangıçts Çalıştırma:** Program başlangıçta çalışması için "Shell:Startup" yoluna kısayol eklenmelidir.
 2. **Arduino Bağlantısı:** Arduino'nun bilgisayara doğru şekilde bağlandığını kontrol edin, kendisi bağlanır.
 
-#### Program bildirim çubuğunda (gizli) açılabilir.
+#### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tılkayıp "Programı Kapat" seçeneğine basın.
 
 #### Arayüz Kullanımı
 - **Zamanlama Ayarları:**
