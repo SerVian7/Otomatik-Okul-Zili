@@ -1,6 +1,6 @@
-﻿using System;
-using System.IO.Ports;
+﻿using System.IO.Ports;
 using System.Management;
+using Timer = System.Windows.Forms.Timer;
 
 namespace AutoBell
 {
@@ -9,6 +9,7 @@ namespace AutoBell
         private SerialPort _serialPort;
         public string _currentPort;
         public int _currentState;
+        private Timer _pingTimer;
 
         public bool IsConnected => _serialPort != null && _serialPort.IsOpen;
 
@@ -17,16 +18,27 @@ namespace AutoBell
 
         public ArduinoConnector()
         {
-            StartConnection();
+            // Initialize the Windows Forms Timer
+            _pingTimer = new Timer();
+            _pingTimer.Interval = 1000; // Ping interval in milliseconds
+            _pingTimer.Tick += PingArduino;
         }
 
-        private async void StartConnection()
+        public async void StartConnection()
         {
-            while (!IsConnected)
+            while (true)
             {
-                ScanAndConnect();
-                await Task.Delay(5000); // 5 saniyede bir dene
+                if (!IsConnected)
+                {
+                    ScanAndConnect();
+                }
+                await Task.Delay(5000);
             }
+        }
+
+        public void StopConnection()
+        {
+            Disconnect();
         }
 
         private void ScanAndConnect()
@@ -39,8 +51,8 @@ namespace AutoBell
                     {
                         foreach (var device in searcher.Get())
                         {
-                            var description = device["Description"].ToString();
-                            if (description.Contains("Arduino"))
+                            var description = device["Description"]?.ToString();
+                            if (description != null && description.Contains("Arduino"))
                             {
                                 Connect(port);
                                 return;
@@ -59,16 +71,84 @@ namespace AutoBell
         {
             try
             {
+                if (_serialPort != null)
+                {
+                    _serialPort.DataReceived -= SerialPort_DataReceived;
+                    _serialPort.Close();
+                }
+
                 _serialPort = new SerialPort(portName, 9600);
                 _serialPort.Open();
+                _serialPort.DataReceived += SerialPort_DataReceived;
                 _currentPort = portName;
                 ConnectionStatusChanged?.Invoke(this, true);
+
+                // Start the timer
+                _pingTimer.Start();
             }
             catch (Exception ex)
             {
                 HandleError($"Failed to connect to Arduino on {portName}: {ex.Message}");
+                Disconnect();
+            }
+        }
+
+        private void PingArduino(object sender, EventArgs e)
+        {
+            try
+            {
+                if (IsConnected)
+                {
+                    _serialPort.WriteLine("1");
+                }
+                else
+                {
+                    ConnectionStatusChanged?.Invoke(this, false);
+                    _serialPort.DataReceived -= SerialPort_DataReceived;
+                    _serialPort.Close();
+                    _serialPort = null;
+                    ConnectionStatusChanged?.Invoke(this, false);
+
+                    // Stop the timer
+                    _pingTimer.Stop();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Test");
+                HandleError($"Failed to ping Arduino: {ex.Message}");
+                Disconnect();
+            }
+        }
+
+        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                string message = _serialPort.ReadLine().Trim();
+                if (int.TryParse(message, out int state))
+                {
+                    _currentState = state;
+                }
+            }
+            catch (Exception ex)
+            {
+                HandleError($"Error receiving data: {ex.Message}");
+                Disconnect();
+            }
+        }
+
+        private void Disconnect()
+        {
+            if (IsConnected)
+            {
+                _serialPort.DataReceived -= SerialPort_DataReceived;
+                _serialPort.Close();
                 _serialPort = null;
                 ConnectionStatusChanged?.Invoke(this, false);
+
+                // Stop the timer
+                _pingTimer.Stop();
             }
         }
 

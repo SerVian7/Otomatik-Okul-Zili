@@ -252,7 +252,7 @@
             Secim_Listen_Btn.Size = new Size(75, 40);
             Secim_Listen_Btn.TabIndex = 1;
             Secim_Listen_Btn.TabStop = false;
-            Secim_Listen_Btn.Text = "Dinle";
+            Secim_Listen_Btn.Text = "Dene";
             Secim_Listen_Btn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             Secim_Listen_Btn.UseAccentColor = false;
             Secim_Listen_Btn.UseVisualStyleBackColor = false;
@@ -331,7 +331,7 @@
             Cikis_Listen_Btn.Size = new Size(75, 40);
             Cikis_Listen_Btn.TabIndex = 1;
             Cikis_Listen_Btn.TabStop = false;
-            Cikis_Listen_Btn.Text = "Dinle";
+            Cikis_Listen_Btn.Text = "Dene";
             Cikis_Listen_Btn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             Cikis_Listen_Btn.UseAccentColor = false;
             Cikis_Listen_Btn.UseVisualStyleBackColor = false;
@@ -410,7 +410,7 @@
             Ogrenci_Listen_Btn.Size = new Size(75, 40);
             Ogrenci_Listen_Btn.TabIndex = 1;
             Ogrenci_Listen_Btn.TabStop = false;
-            Ogrenci_Listen_Btn.Text = "Dinle";
+            Ogrenci_Listen_Btn.Text = "Dene";
             Ogrenci_Listen_Btn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             Ogrenci_Listen_Btn.UseAccentColor = false;
             Ogrenci_Listen_Btn.UseVisualStyleBackColor = false;
@@ -490,7 +490,7 @@
             Ogretmen_Listen_Btn.Size = new Size(75, 40);
             Ogretmen_Listen_Btn.TabIndex = 1;
             Ogretmen_Listen_Btn.TabStop = false;
-            Ogretmen_Listen_Btn.Text = "Dinle";
+            Ogretmen_Listen_Btn.Text = "Dene";
             Ogretmen_Listen_Btn.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             Ogretmen_Listen_Btn.UseAccentColor = false;
             Ogretmen_Listen_Btn.UseVisualStyleBackColor = false;
@@ -559,6 +559,8 @@
             // Sabahci_Switch
             // 
             Sabahci_Switch.BackColor = Color.White;
+            Sabahci_Switch.Checked = true;
+            Sabahci_Switch.CheckState = CheckState.Checked;
             Sabahci_Switch.Depth = 0;
             Sabahci_Switch.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             Sabahci_Switch.Location = new Point(2, 29);
@@ -1122,6 +1124,8 @@
             // Oglenci_Switch
             // 
             Oglenci_Switch.BackColor = Color.White;
+            Oglenci_Switch.Checked = true;
+            Oglenci_Switch.CheckState = CheckState.Checked;
             Oglenci_Switch.Depth = 0;
             Oglenci_Switch.Font = new Font("Segoe UI", 7F, FontStyle.Bold, GraphicsUnit.Point);
             Oglenci_Switch.Location = new Point(9, 29);

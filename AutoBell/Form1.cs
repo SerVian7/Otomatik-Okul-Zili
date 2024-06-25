@@ -1,8 +1,6 @@
 ﻿using AxWMPLib;
 using MaterialSkin.Controls;
 using Newtonsoft.Json;
-using System.Diagnostics;
-using static System.Windows.Forms.AxHost;
 
 namespace AutoBell
 {
@@ -42,6 +40,7 @@ namespace AutoBell
             SwitchState(State.Initializing);
             Hide();
             TimeScheduler_OnStateChanged(_timeScheduler, _timeScheduler.GetLastExecutionPair().Key);
+            if(currentState == State.Initializing) currentState = State.OgrenciZili;
         }
 
         private void SwitchState(State targetState, string period = "", string time = "")
@@ -112,31 +111,31 @@ namespace AutoBell
                     {
                         UpdateJson(reset: true);
                     }
-
                     _timeScheduler.Start();
 
                     ProgramStatus_Label.Text = "Arduino aranıyor...";
                     _arduinoConnector = new ArduinoConnector();
                     _arduinoConnector.ConnectionStatusChanged += ArduinoConnector_ConnectionStatusChanged;
                     _arduinoConnector.ErrorOccurred += ArduinoConnector_ErrorOccurred;
+                    _arduinoConnector.StartConnection();
                     break;
 
                 case State.OgrenciZili:
                     BellStatus_Label.Text = $"[{period}] {time} - Öğrenci zili çaldı.";
 
-                    if (currentState != State.Initializing) Ogrenci_Listen_Btn_Click();
+                    if (currentState != State.Initializing) PlaySound(Ogrenci_Zili_CB.SelectedItem.ToString(), Ogrenci_Volume_Slider.Value);
                     break;
 
                 case State.OgretmenZili:
                     BellStatus_Label.Text = $"[{period}] {time} - Öğretmen zili çaldı.";
 
-                    if (currentState != State.Initializing) Ogretmen_Listen_Btn_Click();
+                    if (currentState != State.Initializing) PlaySound(Ogretmen_Zili_CB.SelectedItem.ToString(), Ogretmen_Volume_Slider.Value);
                     break;
 
                 case State.CikisZili:
                     BellStatus_Label.Text = $"[{period}] {time} - Ders sonu zili çaldı.";
 
-                    if (currentState != State.Initializing) Cikis_Listen_Btn_Click();
+                    if (currentState != State.Initializing) PlaySound(Cikis_Zili_CB.SelectedItem.ToString(), Cikis_Volume_Slider.Value);
                     break;
             }
 
@@ -274,25 +273,37 @@ namespace AutoBell
         private void Ogretmen_Listen_Btn_Click(object sender = null, EventArgs e = null)
         {
             if (Ogretmen_Zili_CB.SelectedItem != null)
-                HandleButton(Ogretmen_Listen_Btn, Ogretmen_Zili_CB.SelectedItem.ToString(), Ogretmen_Volume_Slider);
+            {
+                if (Ogretmen_Listen_Btn.Text == "Dene") SwitchState(State.OgretmenZili, "Manuel", DateTime.Now.ToString("HH:mm:ss"));
+                HandleButton(Ogretmen_Listen_Btn);
+            }
         }
 
         private void Ogrenci_Listen_Btn_Click(object sender = null, EventArgs e = null)
         {
             if (Ogrenci_Zili_CB.SelectedItem != null)
-                HandleButton(Ogrenci_Listen_Btn, Ogrenci_Zili_CB.SelectedItem.ToString(), Ogrenci_Volume_Slider);
+            {
+                if (Ogrenci_Listen_Btn.Text == "Dene") SwitchState(State.OgrenciZili, "Manuel", DateTime.Now.ToString("HH:mm:ss"));
+                HandleButton(Ogrenci_Listen_Btn);
+            }
         }
 
         private void Cikis_Listen_Btn_Click(object sender = null, EventArgs e = null)
         {
             if (Cikis_Zili_CB.SelectedItem != null)
-                HandleButton(Cikis_Listen_Btn, Cikis_Zili_CB.SelectedItem.ToString(), Cikis_Volume_Slider);
+            {
+                if (Cikis_Listen_Btn.Text == "Dene") SwitchState(State.CikisZili, "Manuel", DateTime.Now.ToString("HH:mm:ss"));
+                HandleButton(Cikis_Listen_Btn);
+            }
         }
 
         private void Secim_Listen_Btn_Click(object sender = null, EventArgs e = null)
         {
             if (Sounds_ListBox.SelectedItem != null)
-                HandleButton(Secim_Listen_Btn, Sounds_ListBox.SelectedItem.ToString(), Secim_Volume_Slider);
+            {
+                if (Secim_Listen_Btn.Text == "Dene") PlaySound(Sounds_ListBox.SelectedItem.ToString(), Secim_Volume_Slider.Value);
+                HandleButton(Secim_Listen_Btn);
+            }
         }
 
         private void Secim_Volume_Slider_onValueChanged(object sender, int newValue)
@@ -335,7 +346,7 @@ namespace AutoBell
             {
                 if (playingButton != null)
                 {
-                    SwitchButtonState(playingButton, "Dinle");
+                    SwitchButtonState(playingButton, "Dene");
                     playingButton = null;
                 }
             }
@@ -386,21 +397,20 @@ namespace AutoBell
             axWindowsMediaPlayer1.Ctlcontrols.stop();
         }
 
-        private void HandleButton(MaterialButton button, string soundFile, MaterialSlider slider)
+        private void HandleButton(MaterialButton button)
         {
 
-            if (playingButton != null && playingButton != button) SwitchButtonState(playingButton, "Dinle");
+            if (playingButton != null && playingButton != button) SwitchButtonState(playingButton, "Dene");
 
-            if (button.Text == "Dinle")
+            if (button.Text == "Dene")
             {
-                PlaySound(soundFile, slider.Value);
                 SwitchButtonState(button, "Durdur");
                 playingButton = button;
             }
             else
             {
                 StopSound();
-                SwitchButtonState(button, "Dinle");
+                SwitchButtonState(button, "Dene");
                 playingButton = null;
             }
         }
@@ -409,8 +419,8 @@ namespace AutoBell
         {
             switch (text)
             {
-                case "Dinle":
-                    button.Text = "Dinle";
+                case "Dene":
+                    button.Text = "Dene";
                     button.FlatStyle = FlatStyle.Standard;
                     break;
 

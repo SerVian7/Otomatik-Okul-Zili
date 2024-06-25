@@ -47,8 +47,8 @@
   "O_8_1_MT": "__:__",
   "O_8_2_MT": "__:__",
   "O_8_3_MT": "__:__",
-  "SabahciSwitch": false,
-  "OglenciSwitch": false,
+  "SabahciSwitch": true,
+  "OglenciSwitch": true,
   "OgretmenZili": {
     "Selection": "Melodi 6.wav",
     "Volume": 100
