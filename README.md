@@ -5,7 +5,8 @@
 #### Kurulum
 0. **İndirme:** Sıkıştırılmış dosyayı, programın dizini olacak yere açın.
 1. **Başlangıçts Çalıştırma:** Program başlangıçta çalışması için "Shell:Startup" yoluna kısayol eklenmelidir.
-2. **Arduino Bağlantısı:** Arduino'nun bilgisayara doğru şekilde bağlandığını kontrol edin, kendisi bağlanır.
+2. Arduino kodu "/Resources" dizinin altındadır.
+3. **Arduino Bağlantısı:** Arduino'nun bilgisayara doğru şekilde bağlandığını kontrol edin, kendisi bağlanır.
 
 #### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tılkayıp "Programı Kapat" seçeneğine basın.
 
