@@ -19,7 +19,7 @@
 | PIN_CikisZili    | 6            |
 | LED_BUILTIN      | 17           |
 
-Arduino'nun bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
+Arduino bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
 
 #### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tıklayıp "Programı Kapat" seçeneğine basın.
 
