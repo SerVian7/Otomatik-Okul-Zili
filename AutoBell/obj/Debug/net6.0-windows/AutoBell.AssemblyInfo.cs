@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AutoBell")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6281cbc57cf1497596283d82cfb52f254f6c7958")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94603111351a38636baa8041deb8005a5f03aa69")]
 [assembly: System.Reflection.AssemblyProductAttribute("AutoBell")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AutoBell")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
