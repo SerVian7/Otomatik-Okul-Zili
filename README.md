@@ -6,17 +6,20 @@
 
 #### Kurulum
 0. **İndirme:** Arşivi herhangi bir dizine açın.
-1. **Başlangıçts Çalıştırma:** Program başlangıçta çalışması için "Shell:Startup" yoluna kısayol eklenmelidir.
+1. **Başlangıçta Çalıştırma:** Program başlangıçta çalışması için "Shell:Startup" yoluna kısayol eklenmelidir.
 2. Arduino kodu "/Resources" dizinin altındadır.
 3. **Arduino Bağlantısı:**
 
-  **PIN_OgrenciZili:** 4
-  **PIN_OgretmenZili:** 5
-  **PIN_CikisZili:** 6
-  **LED_BUILTIN:** 17
-  Arduino'nun bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
+| Pin Adı          | Pin Numarası |
+|------------------|--------------|
+| PIN_OgrenciZili  | 4            |
+| PIN_OgretmenZili | 5            |
+| PIN_CikisZili    | 6            |
+| LED_BUILTIN      | 17           |
 
-#### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tılkayıp "Programı Kapat" seçeneğine basın.
+Arduino'nun bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
+
+#### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tıklayıp "Programı Kapat" seçeneğine basın.
 
 #### Arayüz Kullanımı
 - **Zamanlama Ayarları:**
@@ -32,5 +35,5 @@
   
 #### Dosyalar ve Klasörler
 - **BellSchedule.json:** Zamanlama bilgilerini saklar.
-- **Sounds klasörü:** Zil ses dosyalarını içerir.
+- **Sounds klasörü:** Zil ses dosyalarını içerir. İstenilen sesler bu klasöre eklenebilir.
 - **Logs klasörü:** Günlük kayıtlarını tutar.
