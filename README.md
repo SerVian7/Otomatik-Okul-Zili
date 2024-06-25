@@ -10,11 +10,11 @@
 2. Arduino kodu "/Resources" dizinin altındadır.
 3. **Arduino Bağlantısı:**
 
-**PIN_OgrenciZili:** 4
-**PIN_OgretmenZili:** 5
-**PIN_CikisZili:** 6
-**LED_BUILTIN:** 17
-Arduino'nun bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
+  **PIN_OgrenciZili:** 4
+  **PIN_OgretmenZili:** 5
+  **PIN_CikisZili:** 6
+  **LED_BUILTIN:** 17
+  Arduino'nun bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
 
 #### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tılkayıp "Programı Kapat" seçeneğine basın.
 
