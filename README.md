@@ -5,10 +5,10 @@
 ![image](https://github.com/zengeragency/Otomatik-Okul-Zili/assets/62677804/bdd0fd97-5a23-477b-9e36-dd20d1c35bdf)
 
 #### Kurulum
-0. **İndirme:** Sıkıştırılmış dosyayı, programın dizini olacak yere açın.
+0. **İndirme:** Arşivi herhangi bir dizine açın.
 1. **Başlangıçts Çalıştırma:** Program başlangıçta çalışması için "Shell:Startup" yoluna kısayol eklenmelidir.
 2. Arduino kodu "/Resources" dizinin altındadır.
-3. **Arduino Bağlantısı:** Arduino'nun bilgisayara doğru şekilde bağlandığını kontrol edin, kendisi bağlanır.
+3. **Arduino Bağlantısı:** Arduino'nun bilgisayara doğru şekilde bağlandığında otomatik olarak çalışacaktır.
 
 #### Program bildirim çubuğunda çalışıyor. Kapatmak için bildirim çubuğundaki ikona sağ tılkayıp "Programı Kapat" seçeneğine basın.
 
