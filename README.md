@@ -1,5 +1,9 @@
 ### Otomatik Okul Zili Programı - Kullanım Kılavuzu
 
+![image](https://github.com/zengeragency/Otomatik-Okul-Zili/assets/62677804/39759396-3398-45b5-be8b-7d9f6c6c0d56)
+![image](https://github.com/zengeragency/Otomatik-Okul-Zili/assets/62677804/bdd0fd97-5a23-477b-9e36-dd20d1c35bdf)
+
+
 **Amaç:** Belirli zamanlarda otomatik olarak ilgili zili çalmak ve Arduino tabanlı bir sisteme zil sinyali göndermek.
 
 #### Kurulum
